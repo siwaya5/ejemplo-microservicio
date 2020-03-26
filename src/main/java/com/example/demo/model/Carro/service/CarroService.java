@@ -5,8 +5,8 @@
  */
 package com.example.demo.model.Carro.service;
 
-import com.example.demo.model.Carro.model.Carro;
-import java.util.List;
+import com.example.demo.model.Carro.resource.CarroDTO;
+import com.example.demo.utilidades.ResponseUtil;
 
 /**
  *
@@ -14,11 +14,11 @@ import java.util.List;
  */
 public interface CarroService {
     
-    public Carro guardarCarro(Carro carro);
+    public CarroDTO guardarCarro(CarroDTO carro);
     
-    public Carro consultarCarroById(Long id);
+    public CarroDTO consultarCarroById(Long id);
     
-    public List<Carro> consultarAllCarro();
+    public ResponseUtil consultarAllCarro();
     
     public void eliminarCarro(Long id);
     
