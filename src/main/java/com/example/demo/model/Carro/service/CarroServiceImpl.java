@@ -41,7 +41,7 @@ public class CarroServiceImpl implements CarroService {
 
     @Override
     public CarroDTO consultarCarroById(Long id) {
-        return objectMapper.convertValue(carroRepository.findOne(id), CarroDTO.class);
+        return objectMapper.convertValue(carroRepository.findById(id), CarroDTO.class);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class CarroServiceImpl implements CarroService {
 
     @Override
     public void eliminarCarro(Long id) {
-        carroRepository.delete(id);
+        carroRepository.deleteById(id);
     }
 
 }
