@@ -25,17 +25,16 @@ public class Carro {
     @javax.persistence.Id
     @Column(columnDefinition = "serial")
     private Long id;
-    
+
     private String numeroPuerta;
     private String numeroLlanta;
-    private String marca; 
-    @Embedded
-    private Modelo modelo;
+    private String marca;
+    private String modelo;
 
     public Carro() {
     }
 
-    public Carro(Long id, String numeroPuerta, String numeroLlanta, String marca, Modelo modelo) {
+    public Carro(Long id, String numeroPuerta, String numeroLlanta, String marca, String modelo) {
         this.id = id;
         this.numeroPuerta = numeroPuerta;
         this.numeroLlanta = numeroLlanta;
@@ -75,14 +74,12 @@ public class Carro {
         this.marca = marca;
     }
 
-    public Modelo getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(Modelo modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    
-    
-    
+
 }

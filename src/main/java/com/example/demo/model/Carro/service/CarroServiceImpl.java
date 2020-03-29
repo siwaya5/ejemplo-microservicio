@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.utilidades.ResponseUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,17 +37,22 @@ public class CarroServiceImpl implements CarroService {
     @Override
     public CarroDTO guardarCarro(CarroDTO carro) {
         Carro carroSave = objectMapper.convertValue(carro, Carro.class);
-        return objectMapper.convertValue(carroRepository.save(carroSave), CarroDTO.class);
+        carroSave = carroRepository.save(carroSave);
+        CarroDTO carroReturn = new CarroDTO();
+        carroReturn = objectMapper.convertValue(carroSave, CarroDTO.class);
+
+        return carroReturn;
     }
 
     @Override
     public CarroDTO consultarCarroById(Long id) {
-        return objectMapper.convertValue(carroRepository.findById(id), CarroDTO.class);
+        CarroDTO carroReturn = objectMapper.convertValue(carroRepository.findById(id), CarroDTO.class);
+        return carroReturn;
     }
 
     @Override
     public ResponseUtil consultarAllCarro() {
-        
+
         try {
             responseUtil.setMessage("");
             responseUtil.setTipo(Constants.CODE_OK);

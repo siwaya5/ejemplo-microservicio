@@ -42,8 +42,8 @@ public class CarroResource {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void guardarRol(@RequestBody @Valid CarroDTO carro) {
-        carroService.guardarCarro(carro);
+    public CarroDTO guardarCarro(@RequestBody @Valid CarroDTO carro) {
+        return carroService.guardarCarro(carro);
     }
 
 }
