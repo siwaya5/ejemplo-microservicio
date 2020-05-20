@@ -6,6 +6,9 @@
 package com.example.demo.model.Carro.model;
 
 import com.example.demo.model.Carro.model.ddd.Modelo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -29,12 +32,14 @@ public class Carro {
     private String numeroPuerta;
     private String numeroLlanta;
     private String marca;
-    private String modelo;
+    @Embedded
+    @JsonUnwrapped
+    private Modelo modelo;
 
     public Carro() {
     }
 
-    public Carro(Long id, String numeroPuerta, String numeroLlanta, String marca, String modelo) {
+    public Carro(Long id, String numeroPuerta, String numeroLlanta, String marca, Modelo modelo) {
         this.id = id;
         this.numeroPuerta = numeroPuerta;
         this.numeroLlanta = numeroLlanta;
@@ -74,11 +79,11 @@ public class Carro {
         this.marca = marca;
     }
 
-    public String getModelo() {
+    public Modelo getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
+    public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
 

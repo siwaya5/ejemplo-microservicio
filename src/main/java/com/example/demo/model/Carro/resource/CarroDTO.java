@@ -5,6 +5,10 @@
  */
 package com.example.demo.model.Carro.resource;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Map;
+import javax.persistence.Embedded;
+
 /**
  *
  * @author Simon
@@ -68,6 +72,5 @@ public class CarroDTO {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    
-    
+
 }
