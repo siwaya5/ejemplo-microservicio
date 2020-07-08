@@ -65,20 +65,19 @@ public class CarroResource {
 
 //       ActorSystem<MyActor> mySystem = ActorSystem.create(MyActor.)
         final ActorSystem system = ActorSystem.create();
-        system.actorOf(Props.create(MyActor.class)); 
+        system.actorOf(Props.create(MyActor.class));
 
         final ActorRef akkaBot = system.actorOf(Props.create(MyActor.class), "myActor");
 //
 //        akkaBot.tell(new Integer(1), ActorRef.noSender());
-        
+
         Timeout t = new Timeout(5, TimeUnit.SECONDS);
-        Future<Object> fut = Patterns.ask(akkaBot, new Integer(5), t);  
-        Integer response = (Integer)Await.result(fut, t.duration());
-        
+        Future<Object> fut = Patterns.ask(akkaBot, new Integer(5), t);
+        Integer response = (Integer) Await.result(fut, t.duration());
+
         system.stop(akkaBot);
-        
+
         return response;
     }
-
 
 }
