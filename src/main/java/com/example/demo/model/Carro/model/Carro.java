@@ -6,22 +6,22 @@
 package com.example.demo.model.Carro.model;
 
 import com.example.demo.model.Carro.model.ddd.Modelo;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
-
 /**
  *
  * @author Simon
  */
 @Entity
 @Table(name = "carro")
+@EntityListeners({CarroListener.class})
 public class Carro {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,6 +35,10 @@ public class Carro {
     @Embedded
     @JsonUnwrapped
     private Modelo modelo;
+
+    private String compilacion;
+
+
 
     public Carro() {
     }
@@ -85,6 +89,14 @@ public class Carro {
 
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
+    }
+
+    public String getCompilacion() {
+        return compilacion;
+    }
+
+    public void setCompilacion(String compilacion) {
+        this.compilacion = compilacion;
     }
 
 }
